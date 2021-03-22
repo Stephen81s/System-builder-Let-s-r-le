@@ -1,0 +1,48 @@
+init = function(sheet) {
+    log('Mon system!'); // Message qui apparaitra dans le panneau console quand tu feras RUN
+    if (sheet.id() === "main") {
+        initMain(sheet);
+        getBarAttributes(sheet);
+    }
+}; 
+
+//fonction pour drang and drop les craft dans la fiche perso
+drop = function(from, to) {
+    
+    if (from.id() === "Id_view_craft" && to.id() === "main") {
+        return "Id_repeteur_view "; // "weapons" is a repeater id
+    }     
+};
+
+//fonction qui affiche/ cahche des champs suvant les donées dans le selecteur
+
+const initMain = function (sheet) {
+log(sheet.get("ID_du selecteur_de_race").value());
+    if (sheet.get("ID_du selecteur_de_race").value() == "valeur_selectioner_dans_le _selecteur_de_race"){
+        sheet.get("ID_duLabalQueLonVeutCacher").hide();
+        sheet.get("ID_deLinputQueLonVeutCacher").hide();
+    }
+sheet.get("**").on('update',function(){
+
+    if (sheet.get("ID_du selecteur_de_race").value() == "valeur_selectioner_dans_le _selecteur_de_race"){
+        sheet.get("ID_duLabalQueLonVeutMontrer").show();
+        sheet.get("ID_duLabalQueLonVeutMontrer").show();
+    }
+    else if (sheet.get("ID_du selecteur_de_race").value() == "valeur_selectioner_dans_le _selecteur_de_race"){
+        sheet.get("ID_duLabalQueLonVeutCacher").hide();
+        sheet.get("ID_duLabalQueLonVeutCacher").hide();
+    }
+});
+};
+
+//fonction qui affiche les barre de pv 
+getBarAttributes = function(sheet) {
+    if (sheet.id() === "main") {
+        return {
+        "nom_qui_sera_afficher_pour_la_selection": ["ID_duNumberInput_actuel", "ID_duNumberInput_max"],
+        "*nom_qui_sera_afficher_pour_la_selection": ["ID_duNumberInput_actuel","ID_duNumberInput_max"]
+        };
+    }
+
+return {};
+};
